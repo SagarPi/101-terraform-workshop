@@ -1,5 +1,16 @@
 terraform {
   required_version = "0.12.16"
+
+  backend "s3" {
+    bucket = ""
+    region = ""
+    key = "/terraform.tfstate"
+  }
+}
+
+
+variable "aws_access_key" {
+  default = ""
 }
 
 provider "aws" {
