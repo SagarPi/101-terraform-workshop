@@ -3,10 +3,11 @@ resource "aws_key_pair" "ssh_key" {
   public_key = "" // replace with you public IP
 }
 
+
 resource "aws_instance" "first_instance" {
   ami = "ami-04b9e92b5572fa0d1"
 
-  subnet_id = aws_subnet.public_subnet_1.id
+  subnet_id = "subnet-0d26fa40"
 
   key_name = aws_key_pair.ssh_key.key_name
 
@@ -14,9 +15,6 @@ resource "aws_instance" "first_instance" {
 
   associate_public_ip_address = true
 
-  vpc_security_group_ids = [aws_security_group.ssh_port.id, aws_security_group.http.id]
-
-  user_data = data.template_file.install_apache.rendered
 }
 
 resource "aws_instance" "second_instance" {
