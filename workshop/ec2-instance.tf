@@ -1,11 +1,11 @@
-variable "sshkeypath" {
-  default = ""
-}
-
-resource "aws_key_pair" "ssh_key" {
-  key_name = ""
-  public_key = file(var.sshkeypath)
-}
+//variable "sshkeypath" {
+//  default = ""
+//}
+//
+//resource "aws_key_pair" "ssh_key" {
+//  key_name = ""
+//  public_key = file(var.sshkeypath)
+//}
 
 
 resource "aws_instance" "first_instance" {
@@ -13,7 +13,7 @@ resource "aws_instance" "first_instance" {
 
   subnet_id = "subnet-0d26fa40"
 
-  key_name = aws_key_pair.ssh_key.key_name
+//  key_name = aws_key_pair.ssh_key.key_name
 
   instance_type = "t2.micro"
 
